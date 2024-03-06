@@ -17,47 +17,89 @@ class Calculator
         Console.WriteLine("9. Экспонента (e^x)");
         Console.WriteLine("10. Корень (sqrt)");
         Console.WriteLine("11. Логарифм (log)");
-        Console.WriteLine("0. Выход\n\n");
+        Console.WriteLine("0. Выход\n\n ");
 
         while (true)
         {
             Console.Write("Выберите операцию (введите соответствующее число): ");
             string choice = Console.ReadLine();
 
+
+            double num1, num2, angle, value, number;
             switch (choice)
             {
                 case "1":
-                    Addition();
+                    num1 = GetNumber();
+                    num2 = GetNumber();
+                    Console.WriteLine($"Результат: {num1 + num2}");
                     break;
+
                 case "2":
-                    Subtraction();
+                    num1 = GetNumber();
+                    num2 = GetNumber();
+                    Console.WriteLine($"Результат: {num1 - num2}");
                     break;
                 case "3":
-                    Multiplication();
+                    num1 = GetNumber();
+                    num2 = GetNumber();
+                    Console.WriteLine($"Результат: {num1 * num2}");
                     break;
+
                 case "4":
-                    Division();
+                    Console.Write("делимое: ");
+                    double dividend = GetNumber();
+                    Console.Write("Введите делитель: ");
+                    double divisor = GetNumber();
+
+                    if (divisor == 0)
+                        Console.WriteLine("Ошибка: деление на ноль!");
+                    else
+                        Console.WriteLine($"Результат: {dividend / divisor}");
                     break;
+
                 case "5":
-                    Sin();
+                    Console.Write("Введите угол в радианах: ");
+                    angle = GetNumber();
+                    Console.WriteLine($"Результат: { Sin(angle) }");
                     break;
+
                 case "6":
-                    Cos();
+                    Console.Write("Введите угол в радианах: ");
+                    angle = GetNumber();
+                    Console.WriteLine($"Результат: { Cos(angle) }");
                     break;
+
                 case "7":
-                    Tan();
+                    Console.Write("Введите угол в радианах: ");
+                    angle = GetNumber();
+                    Console.WriteLine($"Результат: { Tan(angle) }");
                     break;
+
                 case "8":
-                    Cot();
+                    Console.Write("Введите угол в радианах: ");
+                    angle = GetNumber();
+                    Console.WriteLine($"Результат: {1 / Tan(angle)}");
                     break;
+
                 case "9":
-                    Exp();
+                    Console.Write("Введите значение для экспоненты: ");
+                    value = GetNumber();
+                    Console.WriteLine($"Результат: {Exp(value)}");
                     break;
+
                 case "10":
-                    Sqrt();
+                    number = GetNumber();
+                    if (number < 0)
+                        Console.WriteLine("Ошибка: невозможно извлечь корень из отрицательного числа!");
+                    else
+                        Console.WriteLine($"Результат: {Sqrt(number)}");
                     break;
                 case "11":
-                    Log();
+                    number = GetNumber();
+                    if (number <= 0)
+                        Console.WriteLine("Ошибка: логарифм отрицательного или нулевого числа не определен!");
+                    else
+                        Console.WriteLine($"Результат: {Log(number)}");
                     break;
                 case "0":
                     Console.WriteLine("До свидания!");
@@ -92,90 +134,38 @@ class Calculator
         }
     }
 
-    static void Addition()
+    static double Sin(double x)
     {
-        double num1 = GetNumber();
-        double num2 = GetNumber();
-        Console.WriteLine($"Результат: {num1 + num2}");
+        return x;
     }
 
-    static void Subtraction()
+    static double Cos(double x)
     {
-        double num1 = GetNumber();
-        double num2 = GetNumber();
-        Console.WriteLine($"Результат: {num1 - num2}");
+        return x;
     }
 
-    static void Multiplication()
+    static double Tan(double x)
     {
-        double num1 = GetNumber();
-        double num2 = GetNumber();
-        Console.WriteLine($"Результат: {num1 * num2}");
+        return x;
     }
 
-    static void Division()
+    static double Cot(double x)
     {
-        Console.Write("делимое: ");
-        double dividend = GetNumber();
-        Console.Write("Введите делитель: ");
-        double divisor = GetNumber();
-
-        if (divisor == 0)
-            Console.WriteLine("Ошибка: деление на ноль!");
-        else
-            Console.WriteLine($"Результат: {dividend / divisor}");
+        return x;
     }
 
-    static void Sin()
+    static double Exp(double x)
     {
-        Console.Write("Введите угол в градусах: ");
-        double angle = GetNumber();
-        Console.WriteLine($"Результат: {Math.Sin(angle * Math.PI / 180)}");
+        return x;
     }
 
-    static void Cos()
+    static double Sqrt(double x)
     {
-        Console.Write("Введите угол в градусах: ");
-        double angle = GetNumber();
-        Console.WriteLine($"Результат: {Math.Cos(angle * Math.PI / 180)}");
+        return x;
     }
 
-    static void Tan()
+    static double Log(double x)
     {
-        Console.Write("Введите угол в градусах: ");
-        double angle = GetNumber();
-        Console.WriteLine($"Результат: {Math.Tan(angle * Math.PI / 180)}");
-    }
-
-    static void Cot()
-    {
-        Console.Write("Введите угол в градусах: ");
-        double angle = GetNumber();
-        Console.WriteLine($"Результат: {1 / Math.Tan(angle * Math.PI / 180)}");
-    }
-
-    static void Exp()
-    {
-        Console.Write("Введите значение для экспоненты: ");
-        double value = GetNumber();
-        Console.WriteLine($"Результат: {Math.Exp(value)}");
-    }
-
-    static void Sqrt()
-    {
-        double number = GetNumber();
-        if (number < 0)
-            Console.WriteLine("Ошибка: невозможно извлечь корень из отрицательного числа!");
-        else
-            Console.WriteLine($"Результат: {Math.Sqrt(number)}");
-    }
-
-    static void Log()
-    {
-        double number = GetNumber();
-        if (number <= 0)
-            Console.WriteLine("Ошибка: логарифм отрицательного или нулевого числа не определен!");
-        else
-            Console.WriteLine($"Результат: {Math.Log(number)}");
+        return x;
     }
 }
