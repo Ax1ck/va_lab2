@@ -17,7 +17,7 @@ class Calculator
         Console.WriteLine("9. Экспонента (e^x)");
         Console.WriteLine("10. Корень (sqrt)");
         Console.WriteLine("11. Логарифм (log)");
-        Console.WriteLine("0. Выход");
+        Console.WriteLine("0. Выход\n\n");
 
         while (true)
         {
@@ -69,39 +69,57 @@ class Calculator
         }
     }
 
+    static double GetNumber()
+    {
+        double num;
+
+        while (true)
+        {
+            Console.WriteLine("Введите число: ");
+            string str = Console.ReadLine();
+
+            try
+            {
+                num = Convert.ToDouble(str);
+            }
+            catch(Exception e) 
+            {
+                Console.Write("Ошибка ввода!\t");
+                continue;
+            }
+
+            return num;
+        }
+    }
+
     static void Addition()
     {
-        Console.Write("Введите первое число: ");
-        double num1 = Convert.ToDouble(Console.ReadLine());
-        Console.Write("Введите второе число: ");
-        double num2 = Convert.ToDouble(Console.ReadLine());
+        double num1 = GetNumber();
+        double num2 = GetNumber();
         Console.WriteLine($"Результат: {num1 + num2}");
     }
 
     static void Subtraction()
     {
-        Console.Write("Введите первое число: ");
-        double num1 = Convert.ToDouble(Console.ReadLine());
-        Console.Write("Введите второе число: ");
-        double num2 = Convert.ToDouble(Console.ReadLine());
+        double num1 = GetNumber();
+        double num2 = GetNumber();
         Console.WriteLine($"Результат: {num1 - num2}");
     }
 
     static void Multiplication()
     {
-        Console.Write("Введите первое число: ");
-        double num1 = Convert.ToDouble(Console.ReadLine());
-        Console.Write("Введите второе число: ");
-        double num2 = Convert.ToDouble(Console.ReadLine());
+        double num1 = GetNumber();
+        double num2 = GetNumber();
         Console.WriteLine($"Результат: {num1 * num2}");
     }
 
     static void Division()
     {
-        Console.Write("Введите делимое: ");
-        double dividend = Convert.ToDouble(Console.ReadLine());
+        Console.Write("делимое: ");
+        double dividend = GetNumber();
         Console.Write("Введите делитель: ");
-        double divisor = Convert.ToDouble(Console.ReadLine());
+        double divisor = GetNumber();
+
         if (divisor == 0)
             Console.WriteLine("Ошибка: деление на ноль!");
         else
@@ -111,42 +129,41 @@ class Calculator
     static void Sin()
     {
         Console.Write("Введите угол в градусах: ");
-        double angle = Convert.ToDouble(Console.ReadLine());
+        double angle = GetNumber();
         Console.WriteLine($"Результат: {Math.Sin(angle * Math.PI / 180)}");
     }
 
     static void Cos()
     {
         Console.Write("Введите угол в градусах: ");
-        double angle = Convert.ToDouble(Console.ReadLine());
+        double angle = GetNumber();
         Console.WriteLine($"Результат: {Math.Cos(angle * Math.PI / 180)}");
     }
 
     static void Tan()
     {
         Console.Write("Введите угол в градусах: ");
-        double angle = Convert.ToDouble(Console.ReadLine());
+        double angle = GetNumber();
         Console.WriteLine($"Результат: {Math.Tan(angle * Math.PI / 180)}");
     }
 
     static void Cot()
     {
         Console.Write("Введите угол в градусах: ");
-        double angle = Convert.ToDouble(Console.ReadLine());
+        double angle = GetNumber();
         Console.WriteLine($"Результат: {1 / Math.Tan(angle * Math.PI / 180)}");
     }
 
     static void Exp()
     {
         Console.Write("Введите значение для экспоненты: ");
-        double value = Convert.ToDouble(Console.ReadLine());
+        double value = GetNumber();
         Console.WriteLine($"Результат: {Math.Exp(value)}");
     }
 
     static void Sqrt()
     {
-        Console.Write("Введите число: ");
-        double number = Convert.ToDouble(Console.ReadLine());
+        double number = GetNumber();
         if (number < 0)
             Console.WriteLine("Ошибка: невозможно извлечь корень из отрицательного числа!");
         else
@@ -155,8 +172,7 @@ class Calculator
 
     static void Log()
     {
-        Console.Write("Введите число: ");
-        double number = Convert.ToDouble(Console.ReadLine());
+        double number = GetNumber();
         if (number <= 0)
             Console.WriteLine("Ошибка: логарифм отрицательного или нулевого числа не определен!");
         else
